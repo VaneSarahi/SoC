@@ -1,0 +1,28 @@
+module Immediate(
+    input [31:0] Imm_in,
+    input [1:0] ImmSrc,
+    output reg [31:0] ImmExt
+);
+
+always @(*) begin
+    case(ImmSrc)
+
+        2'b00: //i type
+            ImmExt = {{20{Instr[31]}}, Instr[31:20]};
+
+        2'b01: //s type
+            ImmExt = {{20{Instr[31]}}, Instr[31:25], Instr[11:7]};
+
+        2'b10: //b type
+            ImmExt = {{19{Instr[31]}}, Instr[31], Instr[7], Instr[30:25], Instr[11:8], 1'b0};
+
+        2'b11: //j type
+            ImmExt = {{11{Instr[31]}}, Instr[31], Instr[19:12], Instr[20], Instr[30:21], 1'b0};
+
+        default:
+            ImmExt = 32'b0;
+
+    endcase
+end
+
+endmodule
