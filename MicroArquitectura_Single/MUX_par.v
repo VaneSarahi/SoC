@@ -5,5 +5,5 @@ module MUX_par #(PARAMETER N=2)(
 );
 
 always @(*)
-    mux_out= mux_in[(mux_sel+N)(31): (mux_sel)(31)];
+    mux_out = mux_in[(mux_sel * 32) += 32];
 endmodule 
