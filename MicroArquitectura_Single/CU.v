@@ -22,7 +22,7 @@ mainDecoder md (
     .ALUSrc(ALUSrc), 
     .MemWrite(MemWrite),
     .ResultSrc(ResultSrc),
-    .Branch(Branch, 
+    .Branch(Branch), 
     .ALUOp(ALUOp),  
     .Jump(Jump)
     );
